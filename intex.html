@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <title>My bbg Ifra's day 🥰🥰</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&family=Pacifico&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="site-noise"></div>
+
+<main id="app">
+
+  <!-- =====================================================
+       PAGE 1 — PASSWORD
+       ===================================================== -->
+
+  <section class="page lock-page active" id="lock">
+
+    <div class="lock-left">
+
+      <div class="stars stars-top">
+        <span>★</span>
+        <span>✦</span>
+        <span>★</span>
+        <span>✧</span>
+        <span>★</span>
+        <span>✦</span>
+        <span>★</span>
+        <span>✧</span>
+      </div>
+
+      <div class="photo-frame oval-frame">
+
+        <img src="images/ifra-main.jpg" alt="Ifra">
+
+        <div class="photo-placeholder">
+          ADD<br>IFRA'S PHOTO
+        </div>
+
+      </div>
+
+      <h1>My bbg Ifra's day🥰🥰</h1>
+
+      <p class="tiny-note">
+        a little something made with way too much love ♡
+      </p>
+
+    </div>
+
+
+    <div class="lock-right">
+
+      <div class="lock-inner">
+
+        <p class="eyebrow">
+          a tiny secret first...
+        </p>
+
+        <h2>Enter a passcode</h2>
+
+        <div class="code-display" id="codeDisplay">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <p class="hint">
+          hint: this is the literally the nick I've gave you bbg😭
+        </p>
+
+        <div class="keypad" id="keypad">
+
+          <button data-key="d">D</button>
+          <button data-key="o">O</button>
+          <button data-key="r">R</button>
+
+          <button data-key="a">A</button>
+          <button data-key="♡">♡</button>
+          <button data-key="back">⌫</button>
+
+        </div>
+
+        <button class="enter-btn" id="enterBtn">
+          open my heart ♡
+        </button>
+
+        <p class="error" id="error"></p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       PAGE 2 — BIRTHDAY
+       ===================================================== -->
+
+  <section class="page birthday-page" id="birthday">
+
+    <div class="stripe-bg"></div>
+
+    <div class="scrap-stars">
+      ✦　★　✧　★　✦
+    </div>
+
+    <div class="cutout-title">
+      <span>H</span>
+      <span>a</span>
+      <span>p</span>
+      <span>p</span>
+      <span>Y</span>
+    </div>
+
+    <div class="birthday-photo photo-frame">
+
+      <img src="images/ifra-main.jpg" alt="Ifra">
+
+      <div class="photo-placeholder">
+        IFRA'S PHOTO
+      </div>
+
+    </div>
+
+    <div class="party-pup">
+      🎂
+      <br>
+      <small>birthday<br>girl!</small>
+    </div>
+
+    <div class="page-copy">
+
+      <p class="eyebrow">
+        today is officially about you
+      </p>
+
+      <h2>
+        Happy Birthday,<br>
+        <em>Ifra</em> ♡
+      </h2>
+
+      <p>
+        okay now keep going because I made all of this specifically for you 😭
+      </p>
+
+    </div>
+
+    <button class="next-btn" data-next="award">
+      next →
+    </button>
+
+  </section>
+
+
+  <!-- =====================================================
+       PAGE 3 — AWARD
+       ===================================================== -->
+
+  <section class="page award-page" id="award">
+
+    <div class="award-card">
+
+      <div class="award-border">
+
+        <p class="certificate-small">
+          this award is proudly presented to:
+        </p>
+
+        <h2>
+          Best Thing Happened<br>
+          in My Life Award
+        </h2>
+
+        <p class="presented">
+          presented to
+        </p>
+
+        <div class="script-name">
+          Ifra
+        </div>
+
+        <div class="rule"></div>
+
+        <!-- WRITE YOUR OWN DESCRIPTION HERE -->
+
+        <p class="award-description" contenteditable="true">
+          WRITE YOUR DESCRIPTION HERE — replace this with your own words.
+        </p>
+
+        <div class="medal">
+          ★
+          <span>♡</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="award-doodle">
+      ૮ ˶ᵔ ᵕ ᵔ˶ ა
+      <br>
+      <small>certified bbg</small>
+    </div>
+
+    <button class="next-btn dark" data-next="items">
+      next →
+    </button>
+
+  </section>
+
+
+  <!-- =====================================================
+       PAGE 4 — CUTE OBJECTS
+       ===================================================== -->
+
+  <section class="page items-page" id="items">
+
+    <div class="stripe-bg"></div>
+
+    <h2>
+      click on items to open
+    </h2>
+
+    <div class="item-stage">
+
+      <button
+        class="gift-item heart-box"
+        data-next="search"
+        aria-label="open photos">
+        <span class="ribbon"></span>
+        <span class="bow">🎀</span>
+        ♡
+      </button>
+
+      <button
+        class="gift-item camera-box"
+        data-next="letter"
+        aria-label="open letter">
+
+        📷
+        <br>
+
+        <small>
+          a little letter
+        </small>
+
+      </button>
+
+      <button class="item-sticker">
+        ♡
+      </button>
+
+      <button class="item-arrow" data-next="search">
+        →
+      </button>
+
+    </div>
+
+    <div class="cute-sign">
+      ☁
+      <br>
+      <b>CUTE!</b> →
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       PAGE 5 — GOOGLE SEARCH
+       ===================================================== -->
+
+  <section class="page search-page" id="search">
+
+    <div class="browser-window">
+
+      <div class="browser-bar">
+
+        <span>‹</span>
+        <span>›</span>
+        <span>⌂</span>
+
+        <div class="address">
+          google.com/search?q=my+bbg
+        </div>
+
+        <span>↻</span>
+
+      </div>
+
+
+      <div class="google-content">
+
+        <div class="google-logo">
+          <span>G</span>
+          <span>o</span>
+          <span>o</span>
+          <span>g</span>
+          <span>l</span>
+          <span>e</span>
+        </div>
+
+
+        <div class="search-box">
+          it is my bbg🥰🥰
+          <b>⌕</b>
+        </div>
+
+
+        <p class="results-line">
+          About 1,000,000,000 results
+        </p>
+
+
+        <div class="result">
+
+          <div class="result-title">
+            it is my bbg🥰🥰
+          </div>
+
+          <div class="result-url">
+            ifra-is-the-cutest-person-ever.example
+          </div>
+
+          <p>
+            Yep. No further explanation needed.
+            The evidence is below. ♡
+          </p>
+
+        </div>
+
+
+        <!-- =================================================
+             ADD YOUR FOUR PHOTOS HERE
+             ================================================= -->
+
+        <div class="photo-grid">
+
+          <div class="gallery-photo">
+            <img src="images/ifra-1.jpg" alt="Ifra photo 1">
+            <span>add pic 1</span>
+          </div>
+
+          <div class="gallery-photo">
+            <img src="images/ifra-2.jpg" alt="Ifra photo 2">
+            <span>add pic 2</span>
+          </div>
+
+          <div class="gallery-photo">
+            <img src="images/ifra-3.jpg" alt="Ifra photo 3">
+            <span>add pic 3</span>
+          </div>
+
+          <div class="gallery-photo">
+            <img src="images/ifra-4.jpg" alt="Ifra photo 4">
+            <span>add pic 4</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <button class="next-btn" data-next="letter">
+      the birthday letter →
+    </button>
+
+  </section>
+
+
+  <!-- =====================================================
+       PAGE 6 — BIRTHDAY LETTER
+       ===================================================== -->
+
+  <section class="page letter-page" id="letter">
+
+    <div class="paper">
+
+      <div class="tape tape-one"></div>
+      <div class="tape tape-two"></div>
+
+      <p class="letter-kicker">
+        dear Ifra ♡
+      </p>
+
+      <h2>
+        Birthday letter
+      </h2>
+
+
+      <!-- WRITE YOUR ACTUAL LETTER HERE -->
+
+      <div class="letter-text" contenteditable="true">
+
+        <p>
+          My bbg,
+        </p>
+
+        <p>
+          WRITE YOUR BIRTHDAY LETTER HERE.
+          Make it as long, emotional, embarrassing,
+          stupidly cute or personal as you want.
+        </p>
+
+        <p>
+          You can replace these paragraphs directly
+          in index.html.
+        </p>
+
+        <p>
+          — from your favourite person (obviously) 😭♡
+        </p>
+
+      </div>
+
+
+      <div class="letter-doodle">
+        ♡
+        <br>
+        always
+      </div>
+
+    </div>
+
+
+    <button class="next-btn dark" data-next="jar">
+      one more thing →
+    </button>
+
+  </section>
+
+
+  <!-- =====================================================
+       PAGE 7 — JAR
+       ===================================================== -->
+
+  <section class="page jar-page" id="jar">
+
+    <div class="jar-copy">
+
+      <p class="eyebrow">
+        a jar full of reasons
+      </p>
+
+      <h2>
+        Everything<br>
+        I love about<br>
+        <em>you</em>
+      </h2>
+
+      <p class="jar-instruction">
+        tap a heart ♡
+      </p>
+
+    </div>
+
+
+    <div class="jar-wrap">
+
+      <div class="jar-lid">
+        <span></span>
+      </div>
+
+      <div class="jar">
+
+        <div class="heart h1">
+          ♡
+          <small>your smile</small>
+        </div>
+
+        <div class="heart h2">
+          ♡
+          <small>how you care</small>
+        </div>
+
+        <div class="heart h3">
+          ♡
+          <small>your nonsense</small>
+        </div>
+
+        <div class="heart h4">
+          ♡
+          <small>you, obviously</small>
+        </div>
+
+        <div class="heart h5">
+          ♡
+          <small>your laugh</small>
+        </div>
+
+        <div class="heart h6">
+          ♡
+          <small>everything</small>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <button class="next-btn" data-next="song">
+      last little surprise →
+    </button>
+
+  </section>
+
+
+  <!-- =====================================================
+       PAGE 8 — SONG
+       ===================================================== -->
+
+  <section class="page song-page" id="song">
+
+    <div class="song-card">
+
+      <div class="vinyl">
+        ♫
+      </div>
+
+      <p class="eyebrow">
+        this one is for you
+      </p>
+
+      <h2>
+        Your song ♡
+      </h2>
+
+      <p class="song-note">
+        Put your chosen audio file in
+        <b>music/song.mp3</b>
+      </p>
+
+
+      <audio
+        id="birthdaySong"
+        controls
+        preload="metadata">
+
+        <source
+          src="music/song.mp3"
+          type="audio/mpeg">
+
+        Your browser does not support audio.
+
+      </audio>
+
+
+      <button class="play-btn" id="playBtn">
+        play our song ♫
+      </button>
+
+
+      <p class="final-line">
+        happy birthday, my bbg Ifra 🥹💗
+      </p>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
