@@ -24,89 +24,154 @@
 
     <section class="page lock-page active" id="page1">
 
-        <div class="lock-left">
+        <section class="page lock-page active" id="page1">
 
-            <div class="star s1">★</div>
-            <div class="star s2">★</div>
-            <div class="star s3">★</div>
-            <div class="star s4">★</div>
-            <div class="star s5">★</div>
-            <div class="star s6">★</div>
+    <!-- LEFT SIDE -->
+
+    <div class="lock-left">
+
+        <!-- STARS AROUND THE PHOTO -->
+
+        <div class="star star-a">★</div>
+        <div class="star star-b">★</div>
+        <div class="star star-c">★</div>
+        <div class="star star-d">★</div>
+        <div class="star star-e">★</div>
+        <div class="star star-f">★</div>
+
+        <div class="photo-area">
 
             <div class="photo-frame">
-                <div class="heart-border">♡ ♡ ♡ ♡ ♡ ♡ ♡</div>
+
+                <!-- TOP HEART ROW -->
+                <div class="heart-row heart-row-top">
+                    <span>♡</span>
+                    <span>♡</span>
+                    <span>♡</span>
+                    <span>♡</span>
+                    <span>♡</span>
+                    <span>♡</span>
+                    <span>♡</span>
+                </div>
+
+                <!-- PHOTO -->
 
                 <img
                     src="images/ifra-main.jpg"
                     alt="Ifra"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    onerror="this.style.display='none'; document.querySelector('.photo-placeholder').style.display='flex';"
                 >
 
                 <div class="photo-placeholder">
-                    <span>IFRA'S<br>PHOTO</span>
+                    <span>IFRA'S</span>
+                    <span>PHOTO</span>
                     <small>add your picture here</small>
                 </div>
 
-                <div class="heart-border bottom">♡ ♡ ♡ ♡ ♡ ♡ ♡</div>
+                <!-- BOTTOM HEART ROW -->
+                <div class="heart-row heart-row-bottom">
+                    <span>♡</span>
+                    <span>♡</span>
+                    <span>♡</span>
+                    <span>♡</span>
+                    <span>♡</span>
+                    <span>♡</span>
+                    <span>♡</span>
+                </div>
+
             </div>
 
             <h1 class="lock-title">
-                My bbg Ifra's day🥰🥰
+                My bbg Ifra's day
+                <span class="real-emoji">🥰🥰</span>
             </h1>
 
         </div>
 
+    </div>
 
-        <div class="lock-right">
 
-            <div class="lock-content">
+    <!-- RIGHT SIDE -->
 
-                <h2>Enter a passcode</h2>
+    <div class="lock-right">
 
-                <div class="code-boxes">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
+        <div class="lock-content">
 
-                <div class="keypad">
+            <!-- SMALL TEXT ABOVE PASSCODE -->
 
-                    <!-- Displayed numbers remain like the reference.
-                         Their internal values spell DORA. -->
+            <p class="bbg-question">
+                how do i know are you actually my bbg?😭😭
+            </p>
 
-                    <button data-key="d">1</button>
-                    <button data-key="o">2</button>
-                    <button data-key="r">3</button>
+            <h2>Enter a passcode</h2>
 
-                    <button data-key="a">4</button>
-                    <button data-key="x">5</button>
-                    <button data-key="x">6</button>
 
-                    <button data-key="x">7</button>
-                    <button data-key="x">8</button>
-                    <button data-key="x">9</button>
+            <!-- FOUR PASSCODE BOXES -->
 
-                    <button data-key="clear">*</button>
-                    <button data-key="x">0</button>
-                    <button data-key="back">#</button>
+            <div class="code-boxes">
 
-                </div>
-
-                <p class="hint">
-                    this is the literally the nick I've gave you bbg😭
-                </p>
-
-                <button class="unlock-btn" onclick="checkPassword()">
-                    open my heart ♡
-                </button>
-
-                <p id="wrong-password"></p>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
 
             </div>
 
+
+            <!-- ALPHABET -->
+
+            <div class="alphabet-keypad">
+
+                <button data-key="a">A</button>
+                <button data-key="b">B</button>
+                <button data-key="c">C</button>
+                <button data-key="d">D</button>
+
+                <button data-key="e">E</button>
+                <button data-key="f">F</button>
+                <button data-key="g">G</button>
+                <button data-key="h">H</button>
+
+                <button data-key="i">I</button>
+                <button data-key="j">J</button>
+                <button data-key="k">K</button>
+                <button data-key="l">L</button>
+
+                <button data-key="m">M</button>
+                <button data-key="n">N</button>
+                <button data-key="o">O</button>
+                <button data-key="p">P</button>
+
+                <button data-key="q">Q</button>
+                <button data-key="r">R</button>
+                <button data-key="s">S</button>
+                <button data-key="t">T</button>
+
+                <button data-key="u">U</button>
+                <button data-key="v">V</button>
+                <button data-key="w">W</button>
+                <button data-key="x">X</button>
+
+                <button data-key="y">Y</button>
+                <button data-key="z">Z</button>
+
+                <button class="special-key" data-key="clear">×</button>
+                <button class="special-key" data-key="back">⌫</button>
+
+            </div>
+
+
+            <button class="unlock-btn" onclick="checkPassword()">
+                open my heart ♡
+            </button>
+
+            <p id="wrong-password"></p>
+
         </div>
 
+    </div>
+
+</section>
     </section>
 
 
