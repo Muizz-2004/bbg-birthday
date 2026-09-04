@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My bbg Ifra's Day 🥰</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="floaters" aria-hidden="true"></div>
+
+<!-- ============ SCREEN 1: PASSCODE ============ -->
+<section class="screen active" id="screen-passcode">
+  <div class="passcode-wrap">
+
+    <div class="photo-side">
+      <div class="star-ring">
+        <span class="star" style="--i:0">✦</span>
+        <span class="star" style="--i:1">✦</span>
+        <span class="star" style="--i:2">✦</span>
+        <span class="star" style="--i:3">✦</span>
+        <span class="star" style="--i:4">✦</span>
+        <span class="star" style="--i:5">✦</span>
+        <span class="star" style="--i:6">✦</span>
+        <span class="star" style="--i:7">✦</span>
+        <span class="star" style="--i:8">✦</span>
+        <span class="star" style="--i:9">✦</span>
+        <span class="star" style="--i:10">✦</span>
+        <span class="star" style="--i:11">✦</span>
+        <div class="photo-frame">
+          <!-- 👉 Replace this src with Ifra's photo -->
+          <img src="images/ifra-main.jpg" alt="Ifra" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="photo-fallback">📷<br>Add Ifra's photo here<br><small>images/ifra-main.jpg</small></div>
+        </div>
+      </div>
+      <h1 class="side-caption">My bbg Ifra's day🥰🥰</h1>
+    </div>
+
+    <div class="lock-side">
+      <p class="enter-label">Enter a passcode</p>
+      <div class="code-boxes" id="codeBoxes">
+        <span class="box"></span>
+        <span class="box"></span>
+        <span class="box"></span>
+        <span class="box"></span>
+      </div>
+
+      <p class="wrong-msg" id="wrongMsg">that's not it, try again 🥺</p>
+
+      <div class="keypad" id="keypad">
+        <!-- letters injected by JS -->
+      </div>
+
+      <div class="hint-row">
+        <button class="hint-btn" id="hintBtn">need a hint? 💭</button>
+        <div class="hint-bubble" id="hintBubble">this is literally the nick I've given you bbg😭</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCREEN 2: HAPPY BIRTHDAY ============ -->
+<section class="screen" id="screen-bday">
+  <div class="deco-dog">🐶</div>
+  <div class="deco-cake">🎂</div>
+  <h1 class="ransom-title">
+    <span>H</span><span>a</span><span>p</span><span>p</span><span>y</span>
+  </h1>
+  <div class="cam-frame">
+    <div class="cam-inner">
+      <!-- 👉 Replace this src with Ifra's photo -->
+      <img src="images/ifra-bday.jpg" alt="Ifra" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="photo-fallback small">📷<br>Add Ifra's photo<br><small>images/ifra-bday.jpg</small></div>
+    </div>
+  </div>
+  <h1 class="ransom-title">
+    <span>B</span><span>i</span><span>r</span><span>t</span><span>h</span><span>d</span><span>a</span><span>y</span>
+  </h1>
+  <button class="next-btn" data-next="screen-award">next ➜</button>
+</section>
+
+<!-- ============ SCREEN 3: AWARD ============ -->
+<section class="screen" id="screen-award">
+  <div class="certificate">
+    <div class="cert-corner">🐾</div>
+    <p class="cert-eyebrow">certificate of</p>
+    <h1 class="cert-title">The Best Thing<br>Happened In My Life Award</h1>
+    <p class="cert-presented">this award is presented to</p>
+    <h2 class="cert-name">Ifra</h2>
+    <div class="cert-line"></div>
+    <!-- 👉 Add your own message here -->
+    <p class="cert-desc placeholder-text">write your message here...</p>
+    <div class="cert-ribbon">🎗️</div>
+  </div>
+  <button class="next-btn" data-next="screen-memories">next ➜</button>
+</section>
+
+<!-- ============ SCREEN 4: MEMORIES / SEARCH ============ -->
+<section class="screen" id="screen-memories">
+  <div class="search-mock">
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <span class="search-text">my bbg🥰🥰</span>
+      <span class="search-icons">🎤 📷</span>
+    </div>
+    <div class="search-tabs">
+      <span>All</span><span class="active-tab">Images</span><span>Videos</span><span>News</span><span>Maps</span>
+    </div>
+    <div class="search-grid">
+      <!-- 👉 Add your own photos of you two -->
+      <div class="grid-photo"><img src="images/memory1.jpg" alt="" onerror="this.parentElement.classList.add('empty')"></div>
+      <div class="grid-photo"><img src="images/memory2.jpg" alt="" onerror="this.parentElement.classList.add('empty')"></div>
+      <div class="grid-photo"><img src="images/memory3.jpg" alt="" onerror="this.parentElement.classList.add('empty')"></div>
+      <div class="grid-photo"><img src="images/memory4.jpg" alt="" onerror="this.parentElement.classList.add('empty')"></div>
+      <div class="grid-photo"><img src="images/memory5.jpg" alt="" onerror="this.parentElement.classList.add('empty')"></div>
+      <div class="grid-photo"><img src="images/memory6.jpg" alt="" onerror="this.parentElement.classList.add('empty')"></div>
+    </div>
+  </div>
+  <button class="next-btn" data-next="screen-letter">next ➜</button>
+</section>
+
+<!-- ============ SCREEN 5: LETTER ============ -->
+<section class="screen" id="screen-letter">
+  <div class="letter-wrap">
+    <div class="vinyl-side">
+      <div class="vinyl"></div>
+      <div class="polaroid p1">
+        <img src="images/letter1.jpg" alt="" onerror="this.parentElement.classList.add('empty')">
+      </div>
+      <div class="polaroid p2">
+        <img src="images/letter2.jpg" alt="" onerror="this.parentElement.classList.add('empty')">
+      </div>
+    </div>
+    <div class="notebook">
+      <h2 class="with-love">With Love</h2>
+      <!-- 👉 Feel free to edit this letter however you like -->
+      <p class="letter-text">
+        hey love,<br><br>
+        happy birthday to my forever favourite person💗<br>
+        I'm so grateful to have you in my life. thank you for being my biggest
+        supporter, my secret keeper, and the one who always knows how to make
+        me laugh on my worst days. I hope this little site made you smile even
+        for a second, because you deserve every good thing this world has to
+        offer and then some.<br><br>
+        happy birthday bbg, I love you endlessly🎀
+      </p>
+    </div>
+  </div>
+  <button class="next-btn" data-next="screen-jar">next ➜</button>
+</section>
+
+<!-- ============ SCREEN 6: JAR ============ -->
+<section class="screen" id="screen-jar">
+  <div class="jar-wrap">
+    <div class="jar">
+      <div class="jar-lid"></div>
+      <div class="heart h1">your eyes</div>
+      <div class="heart h2">your smile</div>
+      <div class="heart h3">your hugs</div>
+      <div class="heart h4">how you listen to me</div>
+      <div class="heart h5">how you care for me</div>
+      <div class="heart h6">your voice</div>
+      <div class="heart h7">your gestures</div>
+    </div>
+    <h1 class="jar-title">Everything I love about<br><span>You</span></h1>
+  </div>
+  <button class="next-btn" data-next="screen-song">next ➜</button>
+</section>
+
+<!-- ============ SCREEN 7: SONG ============ -->
+<section class="screen" id="screen-song">
+  <div class="player">
+    <div class="player-art">
+      <img src="images/song-cover.jpg" alt="" onerror="this.parentElement.classList.add('empty')">
+    </div>
+    <p class="player-title">this reminded me of you 🎵</p>
+    <!-- 👉 Add your own audio file -->
+    <audio id="audio" src="song.mp3"></audio>
+    <div class="player-progress">
+      <input type="range" id="seek" value="0" min="0" max="100">
+    </div>
+    <div class="player-times">
+      <span id="curTime">0:00</span>
+      <span id="durTime">0:00</span>
+    </div>
+    <div class="player-controls">
+      <button id="prevBtn">⏮</button>
+      <button id="playBtn">▶</button>
+      <button id="nextBtn">⏭</button>
+    </div>
+  </div>
+  <button class="next-btn restart" data-next="screen-passcode">restart 🎀</button>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
