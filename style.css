@@ -62,168 +62,71 @@ body {
 
 
 /* ================================================= */
-/* PAGE 1 */
+/* PAGE 1 — LOCK SCREEN */
 /* ================================================= */
 
 .lock-page {
     display: flex;
-    background: #f8fcfa;
+    background: #f0faf9;
 }
+
+
+/* ================================================= */
+/* LEFT SIDE */
+/* ================================================= */
 
 .lock-left {
-    width: 58%;
-    height: 100%;
-    background: #eef8f7;
-
     position: relative;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.lock-right {
-    width: 42%;
+    width: 62%;
     height: 100%;
 
-    background:
-        radial-gradient(circle at 20% 15%, rgba(255,255,255,.12) 0 3px, transparent 4px),
-        #dd4f78;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.lock-content {
-    width: min(360px, 82%);
-    text-align: center;
-}
-
-.lock-content h2 {
-    color: white;
-    font-family: "Patrick Hand", cursive;
-    font-size: clamp(27px, 3vw, 44px);
-    margin-bottom: 22px;
-}
-
-.code-boxes {
-    display: flex;
-    justify-content: center;
-    gap: 13px;
-    margin-bottom: 25px;
-}
-
-.code-boxes div {
-    width: 58px;
-    height: 55px;
-    border: 4px solid white;
-    border-radius: 7px;
-    background: rgba(255,255,255,.04);
-
-    color: white;
+    background: #eff9f8;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    font-size: 27px;
-    font-weight: bold;
-}
-
-.keypad {
-    width: 260px;
-    margin: auto;
-
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 13px;
-}
-
-.keypad button {
-    width: 65px;
-    height: 65px;
-
-    border: 3px solid #dfbdc6;
-    border-radius: 50%;
-
-    background: #fffdf8;
-    color: #6c454b;
-
-    font-family: "Patrick Hand", cursive;
-    font-size: 31px;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 3px 0 #a83d5c,
-        inset 0 1px 2px white;
-
-    transition: .15s;
-}
-
-.keypad button:hover {
-    transform: translateY(-3px);
-}
-
-.keypad button:active {
-    transform: translateY(2px);
-    box-shadow: 0 1px 0 #a83d5c;
-}
-
-.hint {
-    color: white;
-    opacity: .95;
-    font-family: "Patrick Hand", cursive;
-    font-size: 18px;
-    margin: 23px auto 15px;
-    max-width: 300px;
-}
-
-.unlock-btn {
-    border: 2px solid white;
-    background: white;
-    color: var(--dark-pink);
-
-    border-radius: 30px;
-    padding: 12px 24px;
-
-    font-family: "Patrick Hand", cursive;
-    font-size: 20px;
-
-    cursor: pointer;
-
-    transition: .2s;
-}
-
-.unlock-btn:hover {
-    transform: scale(1.04);
-}
-
-#wrong-password {
-    height: 22px;
-    color: white;
-    font-size: 14px;
-    margin-top: 8px;
+    overflow: hidden;
 }
 
 
-/* PHOTO */
+/* ================================================= */
+/* PHOTO AREA */
+/* ================================================= */
+
+.photo-area {
+    position: relative;
+
+    width: 580px;
+    max-width: 72%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* ================================================= */
+/* PHOTO FRAME */
+/* ================================================= */
 
 .photo-frame {
     position: relative;
 
-    width: min(390px, 63%);
-    aspect-ratio: .78;
+    width: 465px;
+    max-width: 100%;
 
-    background: white;
+    aspect-ratio: .79;
 
-    border-radius: 48% 48% 45% 45%;
+    background: #fff;
 
-    border: 3px solid #c8dddd;
+    border: 3px solid #c7dddd;
 
-    box-shadow: 0 15px 30px rgba(70,90,90,.12);
+    border-radius: 50%;
+
+    box-shadow:
+        0 15px 30px rgba(80,100,100,.10);
 
     display: flex;
     align-items: center;
@@ -232,19 +135,27 @@ body {
     overflow: visible;
 }
 
-.photo-frame img {
+
+/* ACTUAL PHOTO */
+
+.photo-frame > img {
     position: absolute;
+
     width: 82%;
     height: 82%;
+
     object-fit: cover;
 
     border-radius: 50%;
+
     z-index: 2;
 }
 
+
+/* PLACEHOLDER */
+
 .photo-placeholder {
     position: absolute;
-    z-index: 1;
 
     width: 82%;
     height: 82%;
@@ -254,59 +165,371 @@ body {
     background: #f2f6ed;
 
     display: none;
+
     align-items: center;
     justify-content: center;
     flex-direction: column;
 
-    text-align: center;
-    color: #9b7d84;
+    color: #92747e;
 
     font-family: "Patrick Hand", cursive;
+
+    z-index: 1;
 }
 
 .photo-placeholder span {
-    font-size: 30px;
+    font-size: 31px;
+    line-height: 1.1;
 }
 
 .photo-placeholder small {
+    margin-top: 9px;
     font-size: 15px;
 }
 
-.heart-border {
+
+/* ================================================= */
+/* HEART ROWS */
+/* ================================================= */
+
+.heart-row {
     position: absolute;
-    z-index: 4;
 
-    top: -19px;
-    left: 50%;
+    z-index: 8;
 
-    transform: translateX(-50%);
+    width: 100%;
 
-    width: 105%;
-    white-space: nowrap;
+    display: flex;
 
-    color: #e55c78;
-    letter-spacing: 3px;
+    justify-content: center;
+
+    gap: 14px;
+
+    color: #ed4e77;
+
+    font-family: Arial, sans-serif;
+
     font-size: 20px;
 }
 
-.heart-border.bottom {
-    top: auto;
-    bottom: -17px;
+
+/* IMPORTANT:
+   Hearts sit OUTSIDE the photo,
+   exactly as little decorative marks.
+*/
+
+.heart-row-top {
+    top: -24px;
 }
+
+.heart-row-bottom {
+    bottom: -24px;
+}
+
+
+/* ================================================= */
+/* STARS */
+/* ================================================= */
+
+.star {
+    position: absolute;
+
+    z-index: 10;
+
+    color: #df3e6c;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 31px;
+
+    line-height: 1;
+
+    text-shadow:
+        1px 1px 0 white,
+        0 1px 3px rgba(210,70,100,.2);
+
+    pointer-events: none;
+}
+
+
+/*
+    Deliberately NO stars underneath.
+    They sit to the sides and around the upper area.
+*/
+
+.star-a {
+    top: 18%;
+    left: 13%;
+}
+
+.star-b {
+    top: 10%;
+    left: 43%;
+}
+
+.star-c {
+    top: 29%;
+    right: 12%;
+}
+
+.star-d {
+    top: 64%;
+    left: 11%;
+}
+
+.star-e {
+    top: 69%;
+    right: 13%;
+}
+
+.star-f {
+    top: 80%;
+    left: 23%;
+}
+
+
+/* ================================================= */
+/* TITLE */
+/* ================================================= */
 
 .lock-title {
-    margin-top: 30px;
+    margin-top: 45px;
+
+    color: #d94770;
 
     font-family: "Pacifico", cursive;
-    font-size: clamp(27px, 3vw, 43px);
 
-    color: #d84972;
+    font-size: clamp(31px, 3.4vw, 52px);
 
-    transform: rotate(-2deg);
+    line-height: 1;
+
+    transform: rotate(-3deg);
+
+    white-space: nowrap;
+
+    text-shadow:
+        2px 2px 0 rgba(255,255,255,.8);
+}
+
+.real-emoji {
+    font-family:
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Noto Color Emoji",
+        sans-serif;
+
+    font-size: .72em;
+
+    margin-left: 3px;
+
+    text-shadow: none;
 }
 
 
-/* STARS */
+/* ================================================= */
+/* RIGHT SIDE */
+/* ================================================= */
+
+.lock-right {
+    width: 38%;
+    height: 100%;
+
+    background: #df4f79;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.lock-content {
+    width: min(450px, 88%);
+
+    text-align: center;
+}
+
+
+/* ================================================= */
+/* SMALL QUESTION */
+/* ================================================= */
+
+.bbg-question {
+    color: rgba(255,255,255,.9);
+
+    font-family: "Patrick Hand", cursive;
+
+    font-size: 17px;
+
+    margin-bottom: 4px;
+
+    letter-spacing: .2px;
+}
+
+
+/* ================================================= */
+/* PASSCODE HEADING */
+/* ================================================= */
+
+.lock-content h2 {
+    color: white;
+
+    font-family: "Patrick Hand", cursive;
+
+    font-size: clamp(32px, 3.1vw, 47px);
+
+    line-height: 1;
+
+    margin-bottom: 22px;
+}
+
+
+/* ================================================= */
+/* CODE BOXES */
+/* ================================================= */
+
+.code-boxes {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 13px;
+
+    margin-bottom: 20px;
+}
+
+.code-boxes div {
+    width: 58px;
+    height: 58px;
+
+    border: 4px solid white;
+
+    border-radius: 7px;
+
+    background: rgba(255,255,255,.02);
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-family: "Patrick Hand", cursive;
+
+    font-size: 29px;
+
+    text-transform: uppercase;
+}
+
+
+/* ================================================= */
+/* ALPHABET KEYPAD */
+/* ================================================= */
+
+.alphabet-keypad {
+
+    width: 340px;
+    max-width: 100%;
+
+    margin: 0 auto 24px;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 8px;
+}
+
+.alphabet-keypad button {
+    width: 66px;
+    height: 53px;
+
+    justify-self: center;
+
+    border: 3px solid #e4cbd1;
+
+    border-radius: 50%;
+
+    background: #fffdf8;
+
+    color: #69464d;
+
+    font-family: "Patrick Hand", cursive;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 3px 0 #ae405f;
+
+    transition:
+        transform .12s ease,
+        box-shadow .12s ease;
+}
+
+.alphabet-keypad button:hover {
+    transform: translateY(-2px);
+}
+
+.alphabet-keypad button:active {
+    transform: translateY(2px);
+
+    box-shadow:
+        0 1px 0 #ae405f;
+}
+
+
+/* LAST TWO KEYS */
+
+.alphabet-keypad .special-key {
+    background: #fff9f4;
+    font-size: 28px;
+}
+
+
+/* ================================================= */
+/* UNLOCK BUTTON */
+/* ================================================= */
+
+.unlock-btn {
+    border: none;
+
+    background: white;
+
+    color: #d5456e;
+
+    border-radius: 30px;
+
+    padding: 13px 27px;
+
+    font-family: "Patrick Hand", cursive;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 0 rgba(150,50,80,.18);
+
+    transition: .2s;
+}
+
+.unlock-btn:hover {
+    transform: translateY(-2px);
+}
+
+#wrong-password {
+    min-height: 20px;
+
+    margin-top: 7px;
+
+    color: white;
+
+    font-family: "Patrick Hand", cursive;
+
+    font-size: 16px;
+}
 
 .star {
     position: absolute;
