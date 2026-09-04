@@ -1,2181 +1,320 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-:root {
-    --pink: #e85b82;
-    --dark-pink: #b93661;
-    --light-pink: #ffdce7;
-    --cream: #fffdf9;
-    --paper: #fffefa;
-    --green: #dcebd8;
-    --ink: #633c43;
-}
-
-html,
-body {
-    width: 100%;
-    height: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Fredoka', cursive, sans-serif;
 }
 
 body {
-    overflow: hidden;
-    background: #f7dce5;
-    font-family: "DM Sans", sans-serif;
-    color: var(--ink);
+  background-color: #fcddec;
+  background-image: radial-gradient(#f7a8c4 1px, transparent 1px);
+  background-size: 20px 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #5c3a4d;
 }
 
-
-/* ================================================= */
-/* GENERAL PAGE */
-/* ================================================= */
-
-#app {
-    width: 100vw;
-    height: 100vh;
+.screen {
+  display: none;
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
 }
 
-.page {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-
-    opacity: 0;
-    visibility: hidden;
-    transform: translateX(35px) scale(.98);
-
-    transition:
-        opacity .55s ease,
-        transform .55s ease,
-        visibility .55s;
+.screen.active {
+  display: flex;
+  justify-content: center;
 }
 
-.page.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(0) scale(1);
+/* Lock Screen */
+.lock-container {
+  background: #fbcada;
+  border: 4px solid #fff;
+  border-radius: 25px;
+  padding: 30px;
+  display: flex;
+  gap: 30px;
+  box-shadow: 0 10px 25px rgba(220, 100, 150, 0.2);
+  align-items: center;
 }
 
-
-/* ================================================= */
-/* PAGE 1 — LOCK SCREEN */
-/* ================================================= */
-
-.lock-page {
-    display: flex;
-    background: #f0faf9;
+.left-frame-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-
-/* ================================================= */
-/* LEFT SIDE */
-/* ================================================= */
-
-.lock-left {
-    position: relative;
-
-    width: 62%;
-    height: 100%;
-
-    background: #eff9f8;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    overflow: hidden;
+.stars-top {
+  color: #ff85a2;
+  font-size: 24px;
+  margin-bottom: 10px;
+  letter-spacing: 5px;
 }
 
-
-/* ================================================= */
-/* PHOTO AREA */
-/* ================================================= */
-
-.photo-area {
-    position: relative;
-
-    width: 580px;
-    max-width: 72%;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.oval-frame {
+  width: 180px;
+  height: 240px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  outline: 3px dashed #ff9ebb;
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
 }
 
-
-/* ================================================= */
-/* PHOTO FRAME */
-/* ================================================= */
-
-.photo-frame {
-    position: relative;
-
-    width: 465px;
-    max-width: 100%;
-
-    aspect-ratio: .79;
-
-    background: #fff;
-
-    border: 3px solid #c7dddd;
-
-    border-radius: 50%;
-
-    box-shadow:
-        0 15px 30px rgba(80,100,100,.10);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    overflow: visible;
+.oval-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-
-/* ACTUAL PHOTO */
-
-.photo-frame > img {
-    position: absolute;
-
-    width: 82%;
-    height: 82%;
-
-    object-fit: cover;
-
-    border-radius: 50%;
-
-    z-index: 2;
+.keypad-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
-
-/* PLACEHOLDER */
-
-.photo-placeholder {
-    position: absolute;
-
-    width: 82%;
-    height: 82%;
-
-    border-radius: 50%;
-
-    background: #f2f6ed;
-
-    display: none;
-
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-    color: #92747e;
-
-    font-family: "Patrick Hand", cursive;
-
-    z-index: 1;
-}
-
-.photo-placeholder span {
-    font-size: 31px;
-    line-height: 1.1;
-}
-
-.photo-placeholder small {
-    margin-top: 9px;
-    font-size: 15px;
-}
-
-
-/* ================================================= */
-/* HEART ROWS */
-/* ================================================= */
-
-.heart-row {
-    position: absolute;
-
-    z-index: 8;
-
-    width: 100%;
-
-    display: flex;
-
-    justify-content: center;
-
-    gap: 14px;
-
-    color: #ed4e77;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 20px;
-}
-
-
-/* IMPORTANT:
-   Hearts sit OUTSIDE the photo,
-   exactly as little decorative marks.
-*/
-
-.heart-row-top {
-    top: -24px;
-}
-
-.heart-row-bottom {
-    bottom: -24px;
-}
-
-
-/* ================================================= */
-/* STARS */
-/* ================================================= */
-
-.star {
-    position: absolute;
-
-    z-index: 10;
-
-    color: #df3e6c;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 31px;
-
-    line-height: 1;
-
-    text-shadow:
-        1px 1px 0 white,
-        0 1px 3px rgba(210,70,100,.2);
-
-    pointer-events: none;
-}
-
-
-/*
-    Deliberately NO stars underneath.
-    They sit to the sides and around the upper area.
-*/
-
-.star-a {
-    top: 18%;
-    left: 13%;
-}
-
-.star-b {
-    top: 10%;
-    left: 43%;
-}
-
-.star-c {
-    top: 29%;
-    right: 12%;
-}
-
-.star-d {
-    top: 64%;
-    left: 11%;
-}
-
-.star-e {
-    top: 69%;
-    right: 13%;
-}
-
-.star-f {
-    top: 80%;
-    left: 23%;
-}
-
-
-/* ================================================= */
-/* TITLE */
-/* ================================================= */
 
 .lock-title {
-    margin-top: 45px;
-
-    color: #d94770;
-
-    font-family: "Pacifico", cursive;
-
-    font-size: clamp(31px, 3.4vw, 52px);
-
-    line-height: 1;
-
-    transform: rotate(-3deg);
-
-    white-space: nowrap;
-
-    text-shadow:
-        2px 2px 0 rgba(255,255,255,.8);
+  font-size: 20px;
+  color: #d65a8a;
+  margin-bottom: 5px;
 }
 
-.real-emoji {
-    font-family:
-        "Apple Color Emoji",
-        "Segoe UI Emoji",
-        "Noto Color Emoji",
-        sans-serif;
-
-    font-size: .72em;
-
-    margin-left: 3px;
-
-    text-shadow: none;
+.passcode-label {
+  font-size: 14px;
+  color: #8c5b70;
+  margin-bottom: 10px;
 }
 
-
-/* ================================================= */
-/* RIGHT SIDE */
-/* ================================================= */
-
-.lock-right {
-    width: 38%;
-    height: 100%;
-
-    background: #df4f79;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
+.passcode-dots {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
 }
 
-.lock-content {
-    width: min(450px, 88%);
-
-    text-align: center;
+.dot {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #e06d96;
+  border-radius: 50%;
+  background: transparent;
 }
 
-
-/* ================================================= */
-/* SMALL QUESTION */
-/* ================================================= */
-
-.bbg-question {
-    color: rgba(255,255,255,.9);
-
-    font-family: "Patrick Hand", cursive;
-
-    font-size: 17px;
-
-    margin-bottom: 4px;
-
-    letter-spacing: .2px;
+.dot.filled {
+  background: #e06d96;
 }
 
-
-/* ================================================= */
-/* PASSCODE HEADING */
-/* ================================================= */
-
-.lock-content h2 {
-    color: white;
-
-    font-family: "Patrick Hand", cursive;
-
-    font-size: clamp(32px, 3.1vw, 47px);
-
-    line-height: 1;
-
-    margin-bottom: 22px;
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 15px;
 }
 
-
-/* ================================================= */
-/* CODE BOXES */
-/* ================================================= */
-
-.code-boxes {
-    display: flex;
-
-    justify-content: center;
-
-    gap: 13px;
-
-    margin-bottom: 20px;
+.key {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: #ffaec9;
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #e07a9e;
+  transition: transform 0.1s;
 }
 
-.code-boxes div {
-    width: 58px;
-    height: 58px;
-
-    border: 4px solid white;
-
-    border-radius: 7px;
-
-    background: rgba(255,255,255,.02);
-
-    color: white;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    font-family: "Patrick Hand", cursive;
-
-    font-size: 29px;
-
-    text-transform: uppercase;
+.key:active {
+  transform: translateY(3px);
+  box-shadow: none;
 }
 
-
-/* ================================================= */
-/* ALPHABET KEYPAD */
-/* ================================================= */
-
-.alphabet-keypad {
-
-    width: 340px;
-    max-width: 100%;
-
-    margin: 0 auto 24px;
-
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 8px;
+.hint-container {
+  margin-bottom: 10px;
+  text-align: center;
 }
 
-.alphabet-keypad button {
-    width: 66px;
-    height: 53px;
-
-    justify-self: center;
-
-    border: 3px solid #e4cbd1;
-
-    border-radius: 50%;
-
-    background: #fffdf8;
-
-    color: #69464d;
-
-    font-family: "Patrick Hand", cursive;
-
-    font-size: 24px;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 3px 0 #ae405f;
-
-    transition:
-        transform .12s ease,
-        box-shadow .12s ease;
+.hint-btn {
+  background: none;
+  border: none;
+  color: #b84173;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 12px;
 }
 
-.alphabet-keypad button:hover {
-    transform: translateY(-2px);
+#hint-text {
+  font-size: 11px;
+  color: #8c3257;
+  margin-top: 4px;
+  max-width: 200px;
 }
 
-.alphabet-keypad button:active {
-    transform: translateY(2px);
-
-    box-shadow:
-        0 1px 0 #ae405f;
+.hidden {
+  display: none;
 }
-
-
-/* LAST TWO KEYS */
-
-.alphabet-keypad .special-key {
-    background: #fff9f4;
-    font-size: 28px;
-}
-
-
-/* ================================================= */
-/* UNLOCK BUTTON */
-/* ================================================= */
 
 .unlock-btn {
-    border: none;
-
-    background: white;
-
-    color: #d5456e;
-
-    border-radius: 30px;
-
-    padding: 13px 27px;
-
-    font-family: "Patrick Hand", cursive;
-
-    font-size: 20px;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 4px 0 rgba(150,50,80,.18);
-
-    transition: .2s;
-}
-
-.unlock-btn:hover {
-    transform: translateY(-2px);
-}
-
-#wrong-password {
-    min-height: 20px;
-
-    margin-top: 7px;
-
-    color: white;
-
-    font-family: "Patrick Hand", cursive;
-
-    font-size: 16px;
-}
-
-.star {
-    position: absolute;
-    color: #d83d6a;
-    font-size: 30px;
-
-    text-shadow:
-        0 1px 0 white,
-        0 0 3px #f1a7ba;
-
-    z-index: 5;
-}
-
-.s1 { top: 13%; left: 14%; }
-.s2 { top: 8%; left: 43%; }
-.s3 { top: 25%; left: 66%; }
-.s4 { top: 51%; left: 12%; }
-.s5 { top: 66%; left: 69%; }
-.s6 { top: 72%; left: 22%; }
-
-
-/* ================================================= */
-/* SCRAPBOOK PAGES */
-/* ================================================= */
-
-.scrapbook-page {
-    background:
-        repeating-linear-gradient(
-            90deg,
-            #f9e8ee 0px,
-            #f9e8ee 20px,
-            #fff9f5 20px,
-            #fff9f5 40px,
-            #e7f0df 40px,
-            #e7f0df 60px,
-            #fff9f5 60px,
-            #fff9f5 80px
-        );
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-/* ================================================= */
-/* HAPPY */
-/* ================================================= */
-
-.happy-title {
-    position: absolute;
-    top: 9%;
-
-    display: flex;
-    gap: 3px;
-
-    transform: rotate(-3deg);
-
-    z-index: 4;
-}
-
-.happy-title span {
-    font-family: "Playfair Display", serif;
-    font-weight: 700;
-    font-size: clamp(65px, 10vw, 140px);
-
-    color: #df5475;
-
-    text-shadow:
-        3px 4px 0 white,
-        5px 6px 0 #a83b5b;
-
-    display: block;
-}
-
-.happy-title span:nth-child(1) { transform: rotate(-8deg); }
-.happy-title span:nth-child(2) { transform: rotate(4deg) translateY(9px); }
-.happy-title span:nth-child(3) { transform: rotate(-5deg); }
-.happy-title span:nth-child(4) { transform: rotate(8deg) translateY(10px); }
-.happy-title span:nth-child(5) { transform: rotate(-3deg); }
-
-
-.birthday-collage {
-    position: absolute;
-
-    width: 45%;
-    height: 57%;
-
-    left: 8%;
-    top: 27%;
-}
-
-.birthday-photo {
-    position: absolute;
-
-    width: 70%;
-    height: 82%;
-
-    left: 8%;
-    top: 8%;
-
-    background: white;
-
-    padding: 12px;
-
-    transform: rotate(-5deg);
-
-    box-shadow: 5px 8px 18px rgba(80,50,60,.2);
-}
-
-.birthday-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.photo-add {
-    position: absolute;
-    inset: 0;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-family: "Patrick Hand", cursive;
-    color: #b08a91;
-    font-size: 22px;
-    pointer-events: none;
-}
-
-.cake-sticker {
-    position: absolute;
-    right: 0;
-    bottom: 4%;
-
-    font-size: clamp(65px, 9vw, 130px);
-
-    transform: rotate(10deg);
-}
-
-.bow-sticker {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-
-    font-size: 80px;
-    transform: rotate(-12deg);
-}
-
-.birthday-text {
-    position: absolute;
-
-    right: 9%;
-    top: 40%;
-
-    width: 36%;
-
-    color: #74434e;
-}
-
-.birthday-text h2 {
-    font-family: "Pacifico", cursive;
-    font-size: clamp(28px, 4vw, 52px);
-    color: #d44870;
-
-    margin-bottom: 20px;
-}
-
-.birthday-text p {
-    font-family: "Patrick Hand", cursive;
-    font-size: 23px;
-    line-height: 1.5;
-    margin-bottom: 14px;
-}
-
-.butterfly {
-    position: absolute;
-    font-size: 38px;
-}
-
-.butterfly1 {
-    left: 8%;
-    top: 12%;
-}
-
-.butterfly2 {
-    right: 12%;
-    top: 18%;
-}
-
-.tiny-flower {
-    position: absolute;
-    font-size: 30px;
-    color: #e17892;
-}
-
-.flower1 {
-    left: 48%;
-    bottom: 13%;
-}
-
-.flower2 {
-    right: 8%;
-    bottom: 9%;
-}
-
-
-/* ================================================= */
-/* AWARD */
-/* ================================================= */
-
-.award-paper {
-    position: relative;
-
-    width: min(760px, 75%);
-    min-height: 72%;
-
-    background:
-        linear-gradient(#fffefa, #fffaf7);
-
-    border: 2px solid #d6bdc2;
-
-    padding: 55px;
-
-    text-align: center;
-
-    box-shadow:
-        12px 14px 0 rgba(192,102,125,.18),
-        0 15px 35px rgba(80,50,60,.18);
-
-    transform: rotate(-1deg);
-}
-
-.award-paper:before,
-.award-paper:after {
-    content: "✿";
-    position: absolute;
-    color: #e36c88;
-    font-size: 50px;
-}
-
-.award-paper:before {
-    left: 22px;
-    top: 20px;
-}
-
-.award-paper:after {
-    right: 22px;
-    bottom: 15px;
-}
-
-.award-ribbon {
-    width: 70px;
-    height: 70px;
-
-    margin: auto auto 15px;
-
-    border-radius: 50%;
-
-    background: #e55c7e;
-
-    color: white;
-
-    font-size: 43px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.award-small {
-    letter-spacing: 5px;
-    color: #a8838a;
-    font-size: 14px;
-}
-
-.award-paper h1 {
-    font-family: "Pacifico", cursive;
-    color: #d74e73;
-    font-size: 50px;
-    margin: 6px;
-}
-
-.award-line {
-    width: 60%;
-    height: 1px;
-    background: #d8bbc2;
-    margin: 12px auto 20px;
-}
-
-.award-paper h2 {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(30px, 4vw, 48px);
-    color: #7c4b55;
-    line-height: 1.15;
-}
-
-.award-description {
-    margin: 25px auto;
-    max-width: 570px;
-
-    font-family: "Patrick Hand", cursive;
-    font-size: 21px;
-    line-height: 1.5;
-
-    min-height: 100px;
-    outline: none;
-
-    border-bottom: 1px dashed #d8b8c0;
-}
-
-.award-signature {
-    font-family: "Pacifico", cursive;
-    color: #d95b7a;
-    font-size: 20px;
-}
-
-.scrap-decoration {
-    position: absolute;
-    font-size: 55px;
-}
-
-.deco1 { top: 10%; left: 12%; color: #dd5a7d; }
-.deco2 { bottom: 13%; left: 16%; color: #e6ad5d; }
-.deco3 { top: 17%; right: 12%; color: #d94b72; }
-
-
-/* ================================================= */
-/* ITEMS PAGE */
-/* ================================================= */
-
-.items-page {
-    position: absolute;
-    inset: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #f7e9e7;
-}
-
-.stripe-background {
-    position: absolute;
-    inset: 0;
-
-    background:
-        repeating-linear-gradient(
-            90deg,
-            #f9e8ee 0,
-            #f9e8ee 27px,
-            #fffef8 27px,
-            #fffef8 54px,
-            #e8f0df 54px,
-            #e8f0df 81px
-        );
-
-    opacity: .95;
-}
-
-.curved-heading {
-    position: absolute;
-    z-index: 4;
-
-    top: 9%;
-
-    color: #c84d6d;
-
-    font-family: "Playfair Display", serif;
-    font-size: clamp(35px, 5vw, 72px);
-
-    transform: rotate(-5deg);
-
-    text-shadow:
-        3px 3px 0 white,
-        5px 5px 0 #d88a9f;
-}
-
-
-/* GIFT */
-
-.gift-object {
-    position: absolute;
-    z-index: 5;
-
-    border: none;
-    background: none;
-
-    cursor: pointer;
-
-    left: 34%;
-    top: 37%;
-}
-
-.gift-heart {
-    position: relative;
-
-    width: 270px;
-    height: 240px;
-
-    background: #f2a4ba;
-
-    transform: rotate(-45deg);
-
-    border-radius: 30px;
-
-    box-shadow:
-        inset -12px -10px 0 rgba(190,57,91,.15),
-        10px 15px 20px rgba(100,50,70,.15);
-}
-
-.gift-heart:before,
-.gift-heart:after {
-    content: "";
-    position: absolute;
-
-    width: 270px;
-    height: 240px;
-
-    background: #f2a4ba;
-
-    border-radius: 50%;
-}
-
-.gift-heart:before {
-    top: -135px;
-    left: 0;
-}
-
-.gift-heart:after {
-    left: 135px;
-    top: 0;
-}
-
-.ribbon-horizontal {
-    position: absolute;
-    z-index: 5;
-
-    left: -15px;
-    top: 105px;
-
-    width: 300px;
-    height: 45px;
-
-    background: #d94f72;
-}
-
-.ribbon-vertical {
-    position: absolute;
-    z-index: 6;
-
-    left: 105px;
-    top: -20px;
-
-    width: 45px;
-    height: 285px;
-
-    background: #d94f72;
-}
-
-.bow {
-    position: absolute;
-    z-index: 10;
-
-    left: 68px;
-    top: 72px;
-
-    transform: rotate(45deg);
-}
-
-.bow span {
-    display: block;
-
-    position: absolute;
-
-    width: 70px;
-    height: 45px;
-
-    background: #ed6e8d;
-
-    border-radius: 60% 20% 60% 20%;
-}
-
-.bow span:first-child {
-    transform: translate(-54px, -8px) rotate(25deg);
-}
-
-.bow span:last-child {
-    transform: translate(15px, -8px) rotate(-25deg);
-}
-
-
-/* CAMERA */
-
-.camera-object {
-    position: absolute;
-
-    right: 19%;
-    top: 45%;
-
-    background: none;
-    border: none;
-
-    cursor: pointer;
-
-    transform: rotate(8deg);
-
-    z-index: 6;
-}
-
-.camera-body {
-    position: relative;
-
-    width: 210px;
-    height: 145px;
-
-    background: #fffefa;
-
-    border: 5px solid #8b8584;
-    border-radius: 25px;
-
-    box-shadow: 7px 9px 0 rgba(110,80,85,.18);
-}
-
-.camera-top {
-    position: absolute;
-
-    top: -27px;
-    left: 35px;
-
-    width: 80px;
-    height: 35px;
-
-    background: #fffefa;
-
-    border: 5px solid #8b8584;
-    border-bottom: none;
-
-    border-radius: 15px 15px 0 0;
-}
-
-.camera-lens {
-    position: absolute;
-
-    width: 80px;
-    height: 80px;
-
-    left: 62px;
-    top: 32px;
-
-    border-radius: 50%;
-
-    background: #eaa2b5;
-    border: 7px solid #7d7474;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.camera-lens div {
-    width: 38px;
-    height: 38px;
-
-    border-radius: 50%;
-
-    background: #665c61;
-    border: 6px solid #efc1cd;
-}
-
-.camera-flash {
-    position: absolute;
-
-    top: 23px;
-    right: 22px;
-
-    width: 27px;
-    height: 18px;
-
-    background: #e8c1cb;
-
-    border-radius: 5px;
-}
-
-.camera-button {
-    position: absolute;
-
-    top: 22px;
-    left: 22px;
-
-    width: 16px;
-    height: 16px;
-
-    background: #e56888;
-
-    border-radius: 50%;
-}
-
-.camera-strap {
-    position: absolute;
-
-    width: 275px;
-    height: 90px;
-
-    border: 5px solid #bca1a6;
-    border-top: none;
-
-    border-radius: 0 0 80px 80px;
-
-    left: -33px;
-    top: 40px;
-
-    z-index: -1;
-}
-
-.cute-sign {
-    position: absolute;
-
-    bottom: 8%;
-    left: 9%;
-
-    width: 150px;
-    height: 80px;
-
-    background: #fffefa;
-
-    border: 4px solid #8d8b81;
-
-    transform: rotate(-7deg);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-family: "Patrick Hand", cursive;
-    font-size: 35px;
-
-    color: #7e7770;
-
-    clip-path: polygon(
-        0 15%,
-        72% 15%,
-        100% 50%,
-        72% 85%,
-        0 85%
-    );
-}
-
-.cute-sign b {
-    font-size: 20px;
-    color: #df5d7d;
-    margin-left: 5px;
-}
-
-.cartoon-sticker {
-    position: absolute;
-    right: 7%;
-    bottom: 8%;
-    font-size: 70px;
-}
-
-
-/* ================================================= */
-/* POPUPS */
-/* ================================================= */
-
-.popup {
-    position: fixed;
-    inset: 0;
-
-    z-index: 100;
-
-    background: rgba(80,40,55,.45);
-    backdrop-filter: blur(5px);
-
-    display: none;
-    align-items: center;
-    justify-content: center;
-}
-
-.popup.show {
-    display: flex;
-}
-
-.popup-paper,
-.camera-popup-paper {
-    position: relative;
-
-    width: min(600px, 85%);
-    padding: 45px;
-
-    background: #fffdf8;
-
-    border: 2px solid #d4b8bd;
-
-    box-shadow: 12px 15px 0 rgba(200,90,120,.25);
-
-    transform: rotate(-2deg);
-
-    text-align: center;
-}
-
-.popup-paper h2,
-.camera-popup-paper h2 {
-    font-family: "Pacifico", cursive;
-    color: #d94f73;
-    margin-bottom: 20px;
-}
-
-.popup-paper p {
-    font-family: "Patrick Hand", cursive;
-    font-size: 22px;
-    line-height: 1.5;
-    outline: none;
-}
-
-.popup-heart {
-    color: #df5c7c;
-    font-size: 70px;
-}
-
-.close-popup {
-    position: absolute;
-
-    top: 12px;
-    right: 15px;
-
-    background: none;
-    border: none;
-
-    font-size: 30px;
-    color: #a46d78;
-
-    cursor: pointer;
-}
-
-.mini-gallery {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 10px;
-}
-
-.mini-gallery img {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-    border: 7px solid white;
-    box-shadow: 0 4px 10px #0002;
-}
-
-
-/* ================================================= */
-/* GOOGLE PAGE */
-/* ================================================= */
-
-.search-page {
-    background: #f6f5f2;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.browser-window {
-    width: 91%;
-    height: 84%;
-
-    background: white;
-
-    border-radius: 7px;
-
-    box-shadow:
-        0 20px 50px rgba(60,40,40,.22);
-
-    overflow: hidden;
-}
-
-.browser-top {
-    height: 50px;
-
-    background: #e5e0d7;
-
-    display: grid;
-    grid-template-columns: 120px 1fr 60px;
-
-    align-items: center;
-
-    padding: 0 18px;
-
-    color: #655f5b;
-}
-
-.browser-dots {
-    letter-spacing: 4px;
-    font-size: 10px;
-}
-
-.browser-address {
-    text-align: center;
-
-    background: #f4f2ef;
-
-    border-radius: 20px;
-
-    padding: 8px;
-
-    font-size: 13px;
-}
-
-.google-area {
-    width: 80%;
-    margin: auto;
-
-    padding-top: 6%;
-}
-
-.google-logo {
-    text-align: center;
-
-    font-family: Arial, sans-serif;
-    font-weight: 600;
-
-    font-size: clamp(45px, 7vw, 90px);
-
-    margin-bottom: 25px;
-}
-
-.google-logo span:nth-child(1) { color: #4285f4; }
-.google-logo span:nth-child(2) { color: #ea4335; }
-.google-logo span:nth-child(3) { color: #fbbc05; }
-.google-logo span:nth-child(4) { color: #4285f4; }
-.google-logo span:nth-child(5) { color: #34a853; }
-.google-logo span:nth-child(6) { color: #ea4335; }
-
-.search-bar {
-    width: min(680px, 90%);
-
-    margin: auto;
-
-    border: 1px solid #d7d7d7;
-    border-radius: 30px;
-
-    padding: 15px 23px;
-
-    color: #5c5654;
-
-    font-size: 17px;
-
-    box-shadow: 0 2px 5px rgba(0,0,0,.08);
-}
-
-.search-bar span {
-    float: right;
-    font-size: 25px;
-}
-
-.photo-results {
-    margin-top: 40px;
-
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 15px;
-}
-
-.google-photo {
-    aspect-ratio: 1;
-
-    overflow: hidden;
-
-    background: #f1eeee;
-
-    border-radius: 5px;
-}
-
-.google-photo img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    transition: .3s;
-}
-
-.google-photo:hover img {
-    transform: scale(1.07);
-}
-
-
-/* ================================================= */
-/* LETTER */
-/* ================================================= */
-
-.letter-page {
-    background: #faf8f4;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.record-decoration {
-    position: absolute;
-    left: -100px;
-    top: 25%;
-}
-
-.record {
-    width: 480px;
-    height: 480px;
-
-    border-radius: 50%;
-
-    background:
-        repeating-radial-gradient(
-            circle,
-            #302b2b 0 3px,
-            #252222 5px 7px
-        );
-
-    box-shadow: 0 20px 35px #0003;
-}
-
-.record:after {
-    content: "";
-
-    position: absolute;
-
-    width: 180px;
-    height: 180px;
-
-    background: #ef5c2f;
-
-    border-radius: 50%;
-
-    left: 150px;
-    top: 150px;
-
-    border: 8px solid #fff;
-}
-
-.letter-book {
-    position: relative;
-
-    width: 78%;
-    height: 75%;
-
-    background:
-        repeating-linear-gradient(
-            to bottom,
-            #fff 0,
-            #fff 35px,
-            #d9e1e1 36px
-        );
-
-    box-shadow:
-        8px 15px 35px #0002;
-
-    display: flex;
-}
-
-.spiral {
-    width: 55px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-
-    align-items: center;
-
-    border-right: 1px solid #bbb;
-}
-
-.spiral span {
-    width: 17px;
-    height: 17px;
-
-    border: 3px solid #555;
-    border-radius: 50%;
-}
-
-.letter-content {
-    position: relative;
-
-    flex: 1;
-
-    padding: 50px;
-}
-
-.letter-content h1 {
-    position: absolute;
-
-    top: 22px;
-    right: 55px;
-
-    font-family: "Playfair Display", serif;
-    font-style: italic;
-
-    font-size: clamp(42px, 5vw, 75px);
-
-    color: #777;
-}
-
-.letter-text {
-    margin-left: 37%;
-
-    margin-top: 90px;
-
-    max-width: 55%;
-
-    font-family: "Patrick Hand", cursive;
-    font-size: 22px;
-
-    line-height: 1.75;
-
-    outline: none;
-}
-
-.polaroid {
-    position: absolute;
-
-    width: 190px;
-    height: 220px;
-
-    padding: 12px 12px 38px;
-
-    background: white;
-
-    box-shadow: 0 8px 18px #0003;
-}
-
-.polaroid img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.polaroid-one {
-    left: 6%;
-    top: 10%;
-    transform: rotate(-9deg);
-}
-
-.polaroid-two {
-    left: 11%;
-    bottom: 7%;
-    transform: rotate(8deg);
-}
-
-
-/* ================================================= */
-/* JAR */
-/* ================================================= */
-
-.jar-page {
-    background: #eee7e7;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.jar-background {
-    width: 100%;
-    height: 100%;
-
-    position: relative;
-
-    background:
-        linear-gradient(#eee8e8, #eee5e5);
-}
-
-.jar-layout {
-    width: 85%;
-    height: 100%;
-
-    margin: auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 9%;
-}
-
-.jar-wrapper {
-    position: relative;
-
-    width: min(440px, 38vw);
-    height: 650px;
-}
-
-.jar-glass {
-    position: absolute;
-
-    left: 7%;
-    top: 15%;
-
-    width: 86%;
-    height: 74%;
-
-    background: rgba(225,239,233,.88);
-
-    border: 6px solid #8e9690;
-
-    border-top: none;
-
-    border-radius:
-        12px 12px
-        70px 70px
-        110px 110px;
-
-    box-shadow:
-        inset 15px 0 25px rgba(255,255,255,.6),
-        inset -15px 0 20px rgba(130,150,145,.12);
-}
-
-.jar-glass:before {
-    content: "";
-
-    position: absolute;
-
-    left: 8%;
-    top: 3%;
-
-    width: 7px;
-    height: 83%;
-
-    border-radius: 50%;
-
-    background: rgba(255,255,255,.7);
-
-    transform: rotate(5deg);
-}
-
-.jar-lid {
-    position: absolute;
-
-    z-index: 5;
-
-    left: 8%;
-    top: 7%;
-
-    width: 84%;
-    height: 85px;
-
-    background: #f1d26e;
-
-    border: 5px solid #c9ae55;
-
-    border-radius: 10px 10px 4px 4px;
-
-    overflow: hidden;
-}
-
-.jar-lid div {
-    width: 100%;
-    height: 100%;
-
-    background:
-        repeating-linear-gradient(
-            90deg,
-            transparent 0,
-            transparent 28px,
-            #b39b54 29px,
-            transparent 31px
-        );
-}
-
-.jar-heart {
-    position: absolute;
-
-    border: none;
-    background: none;
-
-    cursor: pointer;
-
-    z-index: 4;
-
-    color: #d45175;
-
-    transition: transform .25s cubic-bezier(.2,1.5,.5,1);
-}
-
-.jar-heart span {
-    display: block;
-
-    font-size: 80px;
-
-    line-height: .75;
-
-    font-family: Arial, sans-serif;
-
-    text-shadow:
-        2px 2px 0 #a83b5d;
-}
-
-.jar-heart small {
-    display: block;
-
-    width: 120px;
-
-    margin-top: -30px;
-
-    font-family: "Patrick Hand", cursive;
-
-    font-size: 15px;
-
-    color: white;
-
-    line-height: 1.05;
-
-    position: relative;
-}
-
-.jar-heart:hover {
-    transform: scale(1.15) rotate(-5deg);
-}
-
-.heart1 { left: 8%; top: 9%; }
-.heart2 { left: 36%; top: 5%; }
-.heart3 { right: 7%; top: 13%; }
-
-.heart4 { left: 15%; top: 35%; }
-.heart5 { right: 14%; top: 36%; }
-
-.heart6 { left: 8%; bottom: 12%; }
-.heart7 { left: 38%; bottom: 8%; }
-.heart8 { right: 7%; bottom: 13%; }
-
-.jar-title {
-    position: relative;
-
-    width: 42%;
-}
-
-.jar-title h1 {
-    font-family: "Playfair Display", serif;
-    font-weight: 500;
-
-    font-size: clamp(50px, 7vw, 105px);
-
-    line-height: .92;
-
-    color: white;
-
-    text-shadow:
-        2px 2px 0 #aaa0a0,
-        4px 4px 0 #fff;
-
-    text-transform: uppercase;
-}
-
-.jar-title em {
-    font-family: "Pacifico", cursive;
-    text-transform: none;
-
-    font-size: 1.2em;
-
-    color: white;
-}
-
-.my-lo {
-    display: inline-block;
-
-    margin-top: 20px;
-
-    border: 3px solid #a77881;
-
-    padding: 5px 18px;
-
-    font-family: "Patrick Hand", cursive;
-    font-size: 25px;
-
-    color: #79515b;
-
-    transform: rotate(-4deg);
-}
-
-
-/* ================================================= */
-/* SONG */
-/* ================================================= */
-
-.song-page {
-    background: #fafafa;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.music-player {
-    width: min(900px, 85%);
-
-    display: flex;
-
-    background: #fff;
-
-    box-shadow: 0 15px 40px #0002;
-}
-
-.album-cover {
-    width: 53%;
-    aspect-ratio: 1;
-
-    background: #f2e6d4;
-
-    position: relative;
-
-    overflow: hidden;
-}
-
-.vinyl {
-    position: absolute;
-
-    width: 90%;
-    height: 90%;
-
-    border-radius: 50%;
-
-    left: -25%;
-
-    top: 5%;
-
-    background:
-        repeating-radial-gradient(
-            circle,
-            #302b2b 0 3px,
-            #201e1e 5px 7px
-        );
-}
-
-.vinyl:after {
-    content: "";
-
-    position: absolute;
-
-    width: 34%;
-    height: 34%;
-
-    border-radius: 50%;
-
-    background: #ef4f2d;
-
-    left: 33%;
-    top: 33%;
-
-    border: 6px solid white;
-}
-
-.song-info {
-    flex: 1;
-
-    padding: 45px 35px;
-
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-}
-
-.song-label {
-    font-family: "Patrick Hand", cursive;
-
-    font-size: 25px;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 25px;
-}
-
-#progress {
-    width: 100%;
-}
-
-.player-controls {
-    margin-top: 20px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 20px;
-}
-
-.player-controls button {
-    border: none;
-    background: none;
-
-    font-size: 22px;
-
-    cursor: pointer;
-
-    color: #44383a;
-}
-
-.player-controls .play-button {
-    width: 60px;
-    height: 60px;
-
-    border-radius: 50%;
-
-    background: #292325;
-
-    color: white;
-
-    font-size: 20px;
-}
-
-.final-message {
-    margin-top: 25px;
-
-    font-family: "Pacifico", cursive;
-
-    color: #d94d72;
-
-    font-size: 24px;
-}
-
-
-/* ================================================= */
-/* NEXT BUTTON */
-/* ================================================= */
-
-.next-button {
-    position: absolute;
-
-    z-index: 20;
-
-    right: 5%;
-    bottom: 6%;
-
-    width: 65px;
-    height: 65px;
-
-    border: none;
-
-    background: transparent;
-
-    color: #cf4669;
-
-    font-size: 65px;
-
-    font-family: serif;
-
-    cursor: pointer;
-
-    transition: .2s;
-}
-
-.next-button:hover {
-    transform: translateX(8px) scale(1.05);
-}
-
-
-/* ================================================= */
-/* MOBILE */
-/* ================================================= */
-
-@media (max-width: 800px) {
-
-    .lock-page {
-        flex-direction: column;
-    }
-
-    .lock-left,
-    .lock-right {
-        width: 100%;
-        height: 50%;
-    }
-
-    .photo-frame {
-        width: 210px;
-        height: 245px;
-    }
-
-    .lock-title {
-        margin-top: 12px;
-        font-size: 25px;
-    }
-
-    .lock-content {
-        transform: scale(.72);
-    }
-
-    .happy-title {
-        top: 5%;
-    }
-
-    .happy-title span {
-        font-size: 55px;
-    }
-
-    .birthday-collage {
-        left: 5%;
-        width: 90%;
-        top: 28%;
-        height: 42%;
-    }
-
-    .birthday-text {
-        top: 70%;
-        left: 8%;
-        width: 84%;
-        text-align: center;
-    }
-
-    .birthday-text h2 {
-        font-size: 28px;
-    }
-
-    .birthday-text p {
-        font-size: 16px;
-    }
-
-    .award-paper {
-        width: 88%;
-        min-height: 70%;
-        padding: 30px 20px;
-    }
-
-    .award-paper h1 {
-        font-size: 38px;
-    }
-
-    .award-paper h2 {
-        font-size: 27px;
-    }
-
-    .award-description {
-        font-size: 17px;
-    }
-
-    .gift-object {
-        left: 18%;
-        top: 40%;
-        transform: scale(.65);
-    }
-
-    .camera-object {
-        right: 5%;
-        top: 52%;
-        transform: scale(.55) rotate(8deg);
-    }
-
-    .curved-heading {
-        font-size: 35px;
-        text-align: center;
-        width: 90%;
-    }
-
-    .cute-sign {
-        transform: scale(.7) rotate(-7deg);
-        left: 3%;
-    }
-
-    .cartoon-sticker {
-        transform: scale(.6);
-    }
-
-    .browser-window {
-        height: 80%;
-        width: 94%;
-    }
-
-    .google-area {
-        width: 92%;
-    }
-
-    .photo-results {
-        grid-template-columns: repeat(2,1fr);
-        gap: 8px;
-        margin-top: 25px;
-    }
-
-    .letter-book {
-        width: 94%;
-        height: 75%;
-    }
-
-    .record-decoration {
-        display: none;
-    }
-
-    .letter-content {
-        padding: 20px;
-    }
-
-    .letter-content h1 {
-        font-size: 35px;
-        top: 15px;
-        right: 15px;
-    }
-
-    .letter-text {
-        margin-left: 0;
-        margin-top: 80px;
-        max-width: 100%;
-        font-size: 16px;
-    }
-
-    .polaroid {
-        display: none;
-    }
-
-    .jar-layout {
-        width: 95%;
-        gap: 0;
-    }
-
-    .jar-wrapper {
-        width: 55vw;
-        height: 520px;
-    }
-
-    .jar-title {
-        width: 42%;
-    }
-
-    .jar-title h1 {
-        font-size: 42px;
-    }
-
-    .jar-heart span {
-        font-size: 45px;
-    }
-
-    .jar-heart small {
-        width: 75px;
-        font-size: 11px;
-        margin-top: -15px;
-    }
-
-    .music-player {
-        width: 90%;
-        flex-direction: column;
-    }
-
-    .album-cover {
-        width: 100%;
-    }
-
-    .song-info {
-        padding: 25px;
-    }
-
+  background: #ff6f91;
+  color: white;
+  border: 2px solid #fff;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #d1496d;
+}
+
+/* Main Hub Screen */
+.hub-container {
+  width: 100%;
+  background: #fbcada;
+  border: 4px solid #fff;
+  border-radius: 25px;
+  padding: 30px;
+  text-align: center;
+}
+
+.header-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.header-photo-frame {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  overflow: hidden;
+}
+
+.header-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pink-title {
+  color: #ff4b72;
+  font-size: 26px;
+  text-shadow: 2px 2px #fff;
+}
+
+.instruction {
+  color: #9e4b6c;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+.interactive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+}
+
+.grid-item {
+  background: #ffe3ed;
+  border: 3px solid #fff;
+  border-radius: 15px;
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 5px 0 #f09cb8;
+  transition: transform 0.2s;
+}
+
+.grid-item:hover {
+  transform: translateY(-3px);
+}
+
+/* Modals */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.cute-card {
+  background: #ffe3ed;
+  border: 4px solid #fff;
+  border-radius: 20px;
+  padding: 25px;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 10px 0 #f09cb8;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 24px;
+  color: #b84173;
+  cursor: pointer;
+}
+
+.award-title {
+  color: #d6336c;
+  font-size: 20px;
+  margin: 15px 0;
+  text-transform: capitalize;
+}
+
+.fake-google-bar {
+  background: #fff;
+  border-radius: 20px;
+  padding: 8px 15px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 15px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #fff;
+}
+
+.jar-graphic {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.heart-note {
+  background: #ff85a2;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 15px;
+  font-size: 12px;
 }
